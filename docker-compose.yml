@@ -3,7 +3,7 @@ version: '2'
 services:
   sonarding:
     restart: always
-    image: mailbyms/sonarding
+    image: mailbyms/sonar-dingtalk
 
     environment:
       - "TZ=Asia/Shanghai"
