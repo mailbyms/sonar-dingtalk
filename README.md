@@ -71,6 +71,3 @@
 - 注意因为 sonarqube 回调时会把项目详情地址设置成 http://localhost:9000/dashboard?id=xxx 的形式，
 所以本项目运行时，设置系统的环境变量 SONAR_HOST，用来替换成正确的域名和端口，详见项目的 `docker-compose.yml`
  
-最后的
- 
- 
