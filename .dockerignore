@@ -1,0 +1,7 @@
+.git
+.mvn
+.drone.yml
+.dockerignore
+docker-compose.yml
+mvnw
+mvnw.cmd

@@ -1,0 +1,12 @@
+
+version: '2'
+services:
+  sonarding:
+    restart: always
+    image: mailbyms/sonarding
+
+    environment:
+      - "TZ=Asia/Shanghai"
+      - "SONAR_HOST=http://192.168.1.193:9000"
+    ports:
+      - 8082:8080
