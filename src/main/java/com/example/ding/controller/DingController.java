@@ -77,6 +77,7 @@ public class DingController{
             bld.append("◇当前值: ").append(ob.get("value")).append("  \n\n");
         }
 
+        bld.append("Rev: " + msg.getRevision()).append(")  \n\n");
         bld.append("[点击查看 sonarqube 完整报告](").append(projectUrl).append(")  \n\n");
 
         markdown.setText(bld.toString());
