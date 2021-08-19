@@ -9,6 +9,7 @@ import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.request.OapiRobotSendRequest;
 import com.dingtalk.api.response.OapiRobotSendResponse;
 import com.example.ding.sonar.SonarMessage;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -72,12 +73,16 @@ public class DingController{
         for (Iterator<Object> iterator = conditionArray.iterator(); iterator.hasNext(); i++) {
             LinkedHashMap<String, String> ob = (LinkedHashMap<String, String>)iterator.next();
 
-            bld.append("■ 判定条件[" + i + "]: " + ob.get("status") + "  \n\n");
+            bld.append("■ 判定条件[").append(i).append("]: ").append(ob.get("status")).append("  \n\n");
             bld.append("◇规则: ").append(ob.get("metric")).append(" not ").append(ob.get("operator")).append(" ").append(ob.get("errorThreshold")).append("  \n\n");
             bld.append("◇当前值: ").append(ob.get("value")).append("  \n\n");
         }
 
-        bld.append("**Rev**: " + msg.getRevision()).append("\n\n");
+        String revision = msg.getRevision();
+        if ((revision != null) && (revision.length() > 8)){
+            revision = revision.substring(0, 8);
+        }
+        bld.append("**Revision**: ").append(revision).append("  \n\n");
         bld.append("[点击查看 sonarqube 完整报告](").append(projectUrl).append(")  \n\n");
 
         markdown.setText(bld.toString());
